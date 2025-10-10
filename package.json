@@ -1,0 +1,24 @@
+
+{
+  "name": "easywebtrail",
+  "version": "1.0.0",
+  "description": "Automated tests using Playwright and YAML config",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:report": "allure generate allure-results --clean && allure open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.1"
+  }
+}

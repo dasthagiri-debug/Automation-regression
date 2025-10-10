@@ -1,0 +1,11 @@
+web:
+  url: https://accounts-test.easywebinar.com/login
+  browser: chromium
+  headless: false
+
+credentials:
+  username: rojaramani.kongari@softobiz.com
+  password: Welcome@1234
+  
+urls:
+  dashboard: https://test-v2.easywebinar.com/v2/events
