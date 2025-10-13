@@ -27,6 +27,11 @@ test.describe('Create Live Webinar with Specific Date', () => {
         await createLiveWebinar.enterWebinarTitle(webinarTitle);
         await createLiveWebinar.clickSchedulingOptions();
 
+        await createLiveWebinar.selectTimeZone();
+        await createLiveWebinar.clickNextToTemplateSelection();
+        await createLiveWebinar.clickSkipAndMoveToDashboard();
+        await createLiveWebinar.verifyWebinarCreated();
+
         console.log('✅ Create Live Webinar with Specific Date test passed');
     });
 
