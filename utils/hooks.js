@@ -21,6 +21,12 @@ test.afterEach(async ({ page }, testInfo) => {
     );
     await page.screenshot({ path: screenshotPath, fullPage: true });
     console.log(`📸 Screenshot saved at ${screenshotPath}`);
+
+    // Attach screenshot to Allure
+    await testInfo.attach('Screenshot', {
+      path: screenshotPath,
+      contentType: 'image/png'
+    });
     // --- Video ---
     if (page.video()) {
       const videoDir = path.join('reports', 'FailedVideos');
@@ -32,6 +38,17 @@ test.afterEach(async ({ page }, testInfo) => {
       );
       await page.video().saveAs(videoPath);
       console.log(`🎬 Failed test video saved at ${videoPath}`);
+        // Attach video to Allure
+      await testInfo.attach('Video', {
+        path: videoPath,
+        contentType: 'video/webm'
+      });
+
+      // --- Optional: automatically open video locally ---
+      const platform = process.platform;
+      if (platform === 'darwin') {
+        exec(`open "${videoPath}"`); // macOS
+      }
     }
   }
 });

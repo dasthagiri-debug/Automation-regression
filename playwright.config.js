@@ -42,7 +42,7 @@ const headless = headlessValue === true || headlessValue === 'true'; // converts
 module.exports = defineConfig({
   testDir: './tests',
   timeout: 30000,
-  retries: 1,
+  retries: 0,
   reporter: [
     ['list'],
     ['allure-playwright']

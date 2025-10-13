@@ -1,6 +1,6 @@
 
 {
-  "name": "easywebtrail",
+  "name": "easywebinar_automation",
   "version": "1.0.0",
   "description": "Automated tests using Playwright and YAML config",
   "main": "index.js",
