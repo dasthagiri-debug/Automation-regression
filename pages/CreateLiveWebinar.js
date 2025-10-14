@@ -13,7 +13,7 @@ class CreateLiveWebinar extends BasePage{
     this.liveWebinar_btn = page.locator('div.creation-select-box').filter({ hasText: 'Live' });
     this.timezoneSelect = page.locator('mat-select[formcontrolname="timezoneId"]');
     this.panel = page.locator('div.mat-select-panel');
-    this.option = panel.locator('mat-option >> text="(UTC+05:30)-Chennai, Kolkata, Mumbai, New Delhi"');
+    this.option = page.locator('mat-option >> text="(UTC+05:30)-Chennai, Kolkata, Mumbai, New Delhi"');
     this.templateSelection_btn = page.locator('//span[contains(text(), "Next : Template Selection")]');
     this.skipAndMoveToDashboard_btn = page.getByRole('button', { name: 'Skip & move to dashboard' });
     this.enterRoomBtn = page.getByText("Enter Room");
@@ -24,7 +24,10 @@ class CreateLiveWebinar extends BasePage{
      await this.validateElementVisibility(dashboard.createWebinar_btn, 'Create Webinar Button');
 
     // Click the "Create a Webinar" button
-    await dashboard.createWebinar_btn.click();
+    await dashboard.createWebinar_btn.click({ timeout: 15000 });
+    console.log('✅ Clicked Create a Webinar button');
+      // Wait for next page or modal to appear
+ // await this.page.waitForLoadState('networkidle', { timeout: 3000 });
 }
    async clickLiveButton() {
     await this.validateElementVisibility(this.liveWebinar_btn, 'Live Webinar Button');
