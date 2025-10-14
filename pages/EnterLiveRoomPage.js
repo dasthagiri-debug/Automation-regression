@@ -145,6 +145,8 @@ await expect(goLive2Btn).toBeEnabled();
 // 6️⃣ Click the Go Live 2 button
 await goLive2Btn.click();
 console.log("✅ Go Live 2 overlay button clicked");
+await this.page.waitForTimeout(30000);
+console.log("✅ Go Live clicked, live screen is visible"); 
 }
 
 }

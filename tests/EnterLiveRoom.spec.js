@@ -2,6 +2,7 @@ const { test } = require('@playwright/test');
 const LoginPage = require('../pages/LoginPage');
 const CreateLiveWebinar = require('../pages/CreateLiveWebinar');
 const EnterLiveRoomPage = require('../pages/EnterLiveRoomPage');
+const EndSessionPage = require('../pages/EndSessionPage');
 require('../utils/hooks');
 
 test.describe('Enter Live Room', () => {
@@ -13,6 +14,8 @@ test.describe('Enter Live Room', () => {
         const loginPage = new LoginPage(page);
         const createLiveWebinar = new CreateLiveWebinar(page);
         const enterLiveRoomPage = new EnterLiveRoomPage(page);
+        const endsessionPage = new EndSessionPage(page);
+
         const webinarTitle = `Live Webinar ${new Date().toISOString()}`;
      // Grant camera and microphone permissions on the current page context
     await page.context().grantPermissions(['camera', 'microphone']);
@@ -42,6 +45,7 @@ test.describe('Enter Live Room', () => {
          await enterLiveRoomPage.clickGotItButton();
          await enterLiveRoomPage.clickGoLiveButton();
          await enterLiveRoomPage.verifyLaunchEventModalLiveButton();
+         await endsessionPage.clickEndSessionButton();
 
 
         console.log('✅ Enter Live Room');
