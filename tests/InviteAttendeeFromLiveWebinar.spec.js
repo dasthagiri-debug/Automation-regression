@@ -3,22 +3,37 @@ const LoginPage = require('../pages/LoginPage');
 const CreateLiveWebinar = require('../pages/CreateLiveWebinar');
 const EnterLiveRoomPage = require('../pages/EnterLiveRoomPage');
 const EndSessionPage = require('../pages/EndSessionPage');
+const InviteAttendeePage = require('../pages/InviteAttendeePage');
 require('../utils/hooks');
 
-test.describe('Enter Live Room', () => {
+test.describe('Invite Attendee', () => {
 
-    test('Enter Live Room @smoke', async ({ page }) => {
+      test.beforeEach(async ({ context }) => {
+  // Grant clipboard permissions to all pages in this context
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+});
+
+    test('Invite Attendee @smoke', async ({ page }) => {
         // Add tag annotation for Allure
-        test.info().annotations.push({ type: 'tag', description: 'smoke' });
-    
+       test.info().annotations.push({ 
+  type: 'tag', 
+  description: 'Invite Attendee For Live Webinar' 
+});
+
+test.info().annotations.push({ 
+  type: 'displayName', 
+  description: 'Invite Attendee - Live Webinar' 
+});
         const loginPage = new LoginPage(page);
         const createLiveWebinar = new CreateLiveWebinar(page);
         const enterLiveRoomPage = new EnterLiveRoomPage(page);
+        const inviteAttendeePage = new InviteAttendeePage(page);
         const endsessionPage = new EndSessionPage(page);
 
         const webinarTitle = `Live Webinar ${new Date().toISOString()}`;
      // Grant camera and microphone permissions on the current page context
     await page.context().grantPermissions(['camera', 'microphone']);
+
     // Hooks already opened URL
 
         await loginPage.enterUsername();
@@ -39,16 +54,18 @@ test.describe('Enter Live Room', () => {
        // await createLiveWebinar.verifyWebinarCreated();
 
        await enterLiveRoomPage.clickEnterRoomButton();
-      //  await enterLiveRoomPage.CameraPermission();
-      //  await enterLiveRoomPage.MicPermission();
          await enterLiveRoomPage.enterGreenRoom();
          await enterLiveRoomPage.clickGotItButton();
          await enterLiveRoomPage.clickGoLiveButton();
          await enterLiveRoomPage.verifyLaunchEventModalLiveButton();
-         await endsessionPage.clickEndSessionButton();
+         await inviteAttendeePage.clickPeopleIcon();
+            await inviteAttendeePage.clickInvitePeople();
+            await inviteAttendeePage.selectAttendeeRole();
+            await inviteAttendeePage.copyAttendeeInvitationLink();
+       //  await endsessionPage.clickEndSessionButton();
 
 
-        console.log('✅ Enter Live Room');
+        console.log('✅ Attendee Invited');
         
     });
 
