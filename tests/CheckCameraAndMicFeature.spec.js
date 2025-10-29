@@ -3,31 +3,35 @@ const LoginPage = require('../pages/LoginPage');
 const CreateLiveWebinar = require('../pages/CreateLiveWebinar');
 const EnterLiveRoomPage = require('../pages/EnterLiveRoomPage');
 const EndSessionPage = require('../pages/EndSessionPage');
-const InviteAttendeePage = require('../pages/InviteAttendeePage');
+const CameraFeaturePage = require('../pages/CameraFeaturePage');
+const MicFeaturePage = require('../pages/MicFeaturePage');
+
+
 require('../utils/hooks');
 
-test.describe('Invite Attendee', () => {
+test.describe('Camera and Mic feature', () => {
 
       test.beforeEach(async ({ context }) => {
   // Grant clipboard permissions to all pages in this context
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
 });
 
-    test('Invite Attendee @smoke', async ({ page }) => {
+    test('Camera and Mic feature @smoke', async ({ page }) => {
         // Add tag annotation for Allure
        test.info().annotations.push({ 
   type: 'tag', 
-  description: 'Invite Attendee For Live Webinar' 
+  description: 'Camera and Mic feature' 
 });
 
 test.info().annotations.push({ 
   type: 'displayName', 
-  description: 'Invite Attendee - Live Webinar' 
+  description: 'Camera and Mic feature' 
 });
         const loginPage = new LoginPage(page);
         const createLiveWebinar = new CreateLiveWebinar(page);
         const enterLiveRoomPage = new EnterLiveRoomPage(page);
-        const inviteAttendeePage = new InviteAttendeePage(page);
+        const camerafeaturePage = new CameraFeaturePage(page);
+        const micfeaturePage = new MicFeaturePage(page);
         const endsessionPage = new EndSessionPage(page);
 
         const webinarTitle = `Live Webinar ${new Date().toISOString()}`;
@@ -54,23 +58,17 @@ test.info().annotations.push({
        // await createLiveWebinar.verifyWebinarCreated();
 
        await enterLiveRoomPage.clickEnterRoomButton();
+       
          await enterLiveRoomPage.enterGreenRoom();
          await enterLiveRoomPage.clickGotItButton();
          await enterLiveRoomPage.clickGoLiveButton();
          await enterLiveRoomPage.verifyLaunchEventModalLiveButton();
-         await inviteAttendeePage.clickPeopleIcon();
-         await inviteAttendeePage.clickInvitePeople();
-         await inviteAttendeePage.selectAttendeeRole();
-         await inviteAttendeePage.copyAttendeeInvitationLink();
-         await inviteAttendeePage.fillAttendeeDetailsAndJoin('Tester tyyu', 'tayu@gmail.com');
-         await inviteAttendeePage.handleClickForSound();
-         await inviteAttendeePage.clickAttendeeLeaveButton();
-         await inviteAttendeePage.clickLeaveSession();
-         await inviteAttendeePage.clickClosePopupOfAttendeeButton();
+        await camerafeaturePage.toggleCamera();
+        await micfeaturePage.toggleMic();
         await endsessionPage.clickEndSessionButton();
 
 
-        console.log('✅ Attendee Invited');
+        console.log('✅ Camera and Mic feature tested successfully');
         
     });
 
