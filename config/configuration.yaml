@@ -1,11 +1,24 @@
 web:
-  url: hhttps://accounts-uat.easywebinar.com/login
+  url: https://accounts-uat.easywebinar.com/login
+  #url: https://accounts-test.easywebinar.com/login
   browser: chromium
   headless: false
 
 credentials:
   username: easywebinar4@gmail.com
-  password: Uday@63121
+  #username: easywebinar4+20@gmail.com
+  password: Welcome@1234
   
 urls:
-  dashboard: https://test-v2.easywebinar.com/v2/events
+  dashboard: https://uat.easywebinar.com/v2/events
+  schedule: https://uat.easywebinar.com/v2/events/137175/schedule
+  #dashboard: https://test-v2.easywebinar.com/v2/events
+
+webinars:
+  videotitle: Tom and Jerry Fight
+  videourl: https://www.youtube.com/watch?v=YTDHcEJs684
+
+attendee:
+  fullname: Test Tanuja
+  email: testtanuja@example.com
+
