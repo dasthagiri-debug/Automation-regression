@@ -43,7 +43,7 @@ test.info().annotations.push({
         await loginPage.verifyDashboardRedirect();
 
         // Validate events dashboard elements after successful login
-       
+       // await createAutomatedWebinar.closeBlackFridayPopup();
         await createLiveWebinar.clickonCreateWebinar();
         await createLiveWebinar.clickLiveButton();
         await createLiveWebinar.enterWebinarTitle(webinarTitle);

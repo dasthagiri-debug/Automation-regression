@@ -13,7 +13,8 @@ class ShareFilePage
    this.shareLocator =  page.getByText('Share', { exact: true });
    // this.shareFileLocator = page.getByRole('heading', { name: 'Share File Share a PowerPoint' });
     this.shareFileLocator = page.getByText('Share a PowerPoint slide or presentation material', { exact: true });
-    this.selctFileFromLibraryLocator = page.locator('span.img:has(img)');
+    this.selctFileFromLibraryLocator =page.locator("//span[normalize-space()='ewm -tm webinar secrets.pdf']");
+    //this.selctFileFromLibraryLocator = page.locator('span.img:has(img)');
     this.shareFilebutton = page.getByRole('button', { name: 'Share' });
     this.allSlideImgs = page.locator('.ppt-slideshare > div img');
     //this.closepopupinmainpage = page.getByText('×').nth(3);

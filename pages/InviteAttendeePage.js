@@ -29,7 +29,10 @@ const { expect } = require('@playwright/test');
   
 
   async clickPeopleIcon(){
-    await this.peopleIcon.click({ timeout: 5000 });
+    await this.peopleIcon.waitFor({ state: 'visible', timeout: 15000 });
+   // await this.page.waitForTimeout(20000);
+   // await this.peopleIcon.click({ timeout: 5000 });
+    await this.peopleIcon.click({ force: true });
     console.log("People icon clicked");
   }
   async clickInvitePeople(){
