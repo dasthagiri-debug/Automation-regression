@@ -9,15 +9,17 @@ class CreateLiveWebinar extends BasePage{
     this.page = page;
 
     //Locators
-    this.addTitle_txt = page.locator('input[placeholder="Add your webinar title..."]');
+    //this.addTitle_txt = page.locator('input[placeholder="Add your webinar title..."]');
+     this.addTitle_txt = page.locator("#mat-input-0");
+    
     this.schedulingOptions_btn = page.locator('button:has-text("Next : Scheduling Options")');
-    this.liveWebinar_btn = page.locator('div.creation-select-box').filter({ hasText: 'Live' });
+    this.liveWebinar_btn = page.locator("div.creation-select-box").first();
     this.timezoneSelect = page.locator('mat-select[formcontrolname="timezoneId"]');
     this.panel = page.locator('div.mat-select-panel');
     this.option = page.locator('mat-option >> text="(UTC+05:30)-Chennai, Kolkata, Mumbai, New Delhi"');
     this.templateSelection_btn = page.locator('//span[contains(text(), "Next : Template Selection")]');
-    this.skipAndMoveToDashboard_btn = page.getByRole('button', { name: 'Skip & move to dashboard' });
-    this.enterRoomBtn = page.getByText("Enter Room");
+    this.skipAndMoveToDashboard_btn = page.getByRole('button', { name: 'Skip for Now' });
+    this.enterRoomBtn = page.getByText(" Enter Room ");
 
   }
     async clickonCreateWebinar() {
